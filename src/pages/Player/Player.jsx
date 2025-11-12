@@ -16,7 +16,7 @@ const Player = () => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: `Bearer ${process.env.VITE_TMDB_TOKEN}`,
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
     },
   };
 
@@ -32,16 +32,16 @@ const Player = () => {
   return (
     <div className="player">
       <img src={back_arrow_icon} alt="" onClick={() => navigate("/")} />
-      {apiData.key && (
-        <iframe
-          frameBorder="0"
-          width="90%"
-          height="90%"
-          src={`https://www.youtube.com/embed/${apiData.key}`}
-          title="trailer"
-          allowFullScreen
-        ></iframe>
-      )}
+
+      <iframe
+        frameBorder="0"
+        width="90%"
+        height="90%"
+        src={`https://www.youtube.com/embed/${apiData.key}`}
+        title="trailer"
+        allowFullScreen
+      ></iframe>
+
       <div className="player-info">
         <p>{apiData.published_at.slice(0, 10)}</p>
         <p>{apiData.name}</p>
